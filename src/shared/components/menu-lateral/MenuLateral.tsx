@@ -1,7 +1,6 @@
-import { Avatar, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from '@mui/material';
-
-import { Box } from '@mui/system';
-import { useDrawerContext } from '../../contexts';
+// componente menu lateral da aplicação
+import { Avatar, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme, Box } from '@mui/material';
+import { useAppThemeContext, useDrawerContext } from '../../contexts';
 import React from 'react';
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 
@@ -37,16 +36,19 @@ export const MenuLateral: React.FC = ({ children }) => {
     const theme = useTheme();
     const smDown = useMediaQuery(theme.breakpoints.down('sm'));
     const { isDrawerOpen, toggleDrawerOpen, drawerOptions } = useDrawerContext();
+    const { toggleTheme } = useAppThemeContext();
+
     return (
         <>
+            {/* elemento drawer da aplicacao */}
             <Drawer open={isDrawerOpen} variant={smDown ? 'temporary' : 'permanent'} onClose={toggleDrawerOpen}>
                 <Box width={theme.spacing(28)} height='100%' display='flex' flexDirection='column'>
                     <Box width='100%' height={theme.spacing(20)} display='flex' alignItems='center' justifyContent='center'>
-                        <Avatar sx={{ height: theme.spacing(12), width: theme.spacing(12) }} alt='Sidney Ferracin Jr.' src='https://avatars.githubusercontent.com/u/64179428?v=4' />
+                        {/* icone de avatar */}
+                        <Avatar sx={{ height: theme.spacing(12), width: theme.spacing(12) }} alt='Sidney Ferracin Jr.' src='https://avatars.githubusercontent.com/u/64179428?v=4' /> 
                     </Box>
                     <Divider />
-
-                    <Box flex={1}>
+                    <Box>
                         <List component='nav'>
                             {drawerOptions.map(drawerOptions => (
                                 <ListItemLink
@@ -59,7 +61,17 @@ export const MenuLateral: React.FC = ({ children }) => {
                             ))}
                         </List>
                     </Box>
-
+                </Box>
+                {/* Item Alternar Tema do menu lateral */}
+                <Box flex={1}>
+                    <List component='nav'>
+                        <ListItemButton onClick={toggleTheme}>
+                            <ListItemIcon>
+                                <Icon>brightness_4</Icon>
+                            </ListItemIcon>
+                            <ListItemText primary="Alternar Tema" />
+                        </ListItemButton>
+                    </List>
                 </Box>
             </Drawer>
 

@@ -1,13 +1,12 @@
-import { createContext, useCallback, useContext, useMemo, useState } from "react";
-import { ThemeProvider } from "@mui/material";
-import { Box } from '@mui/system';
+import { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import { ThemeProvider, Box } from '@mui/material';
 
-import { DarkTheme, LightTheme } from "./../themes";
+import { DarkTheme, LightTheme } from './../themes';
 
 interface IThemeContextData {
     themeName: 'light' | 'dark';
     toggleTheme: () => void;
-};
+}
 
 const ThemeContext = createContext({} as IThemeContextData);
 

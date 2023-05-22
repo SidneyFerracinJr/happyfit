@@ -27,10 +27,17 @@ export const AppRoutes = () => {
         ]);
     }, []);
 
+
     return (
         //configuracao de rotas
         <Routes>
-            <Route path="/pagina-inicial" element={<Dashboard/>} />
+            <Route path='/pagina-inicial' element={<Dashboard/>} />
+            <Route path='/login' element={<Dashboard/>} />
+            <Route path='/cadastro' element={<Dashboard/>} />
+
+            <Route path='/agua' element={<Dashboard/>} />
+            <Route path='/exercicios' element={<Dashboard/>} />
+            <Route path='/alimentacao' element={<Dashboard/>} />
 
             <Route path="*" element={<Navigate to="/pagina-inicial" />} />
         </Routes>
